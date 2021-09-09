@@ -1,1 +1,2 @@
-# AlgorithmsDataStructures-GB
+# Алгоритмы и структуры данных
+Учебный курс школы GeekBrains на языке C
