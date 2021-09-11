@@ -46,9 +46,9 @@ int main()
 
 void menu()
 {
-    printf("1 — Task 1\n");
-    printf("2 — Task 2\n");
-    printf("3 — Task 3\n");
+    printf("\n1 — Body Mass Index\n");
+    printf("2 — The maximum of four numbers\n");
+    printf("3 — Swap two numbers\n");
     printf("0 — Exit\n");
 }
 
@@ -58,6 +58,8 @@ void solution1()
 {
     double m;
     double h;
+    
+    printf("\nBody Mass Index.\n");
     
     printf("Enter weight in kilograms (example: 75):");
     scanf("%lf", &m);
@@ -76,6 +78,8 @@ void solution2()
     int a, b, c, d;
     int firstCandidate, secondCandidate;
 
+    printf("\nThe maximum of four numbers.\n");
+    
     printf("Enter 1st number:");
     scanf("%i", &a);
     
@@ -108,7 +112,39 @@ void solution2()
     
 }
 
+// 3. Написать программу обмена значениями двух целочисленных переменных:
+//  a. с использованием третьей переменной;
+//  b. *без использования третьей переменной.
 void solution3()
 {
-    printf("Solution: 3\n");
+    int a, b;
+    int temp_a;
+    
+    // 1
+    printf("\n1) Swap method with an additional variable.\n");
+    printf("Enter 1st number:");
+    scanf("%i", &a);
+    
+    printf("Enter 2nd number:");
+    scanf("%i", &b);
+    
+    temp_a = a;
+    a = b;
+    b = temp_a;
+    
+    printf("Method 1. Swap result: %i and %i\n", a, b);
+    
+    // 2*
+    printf("\n2) Swap method without additional variable.\n");
+    printf("Enter 1st number:");
+    scanf("%i", &a);
+    
+    printf("Enter 2nd number:");
+    scanf("%i", &b);
+    
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    
+    printf("Method 2. Swap result: %i and %i\n", a, b);
 }
