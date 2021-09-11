@@ -19,6 +19,7 @@ int main()
     do
     {
         menu();
+        printf("Enter your choice: ");
         scanf("%i", &selected);
         
         switch (selected)
@@ -61,10 +62,10 @@ void solution1()
     
     printf("\nBody Mass Index.\n");
     
-    printf("Enter weight in kilograms (example: 75):");
+    printf("Enter weight in kilograms (example: 75): ");
     scanf("%lf", &m);
 
-    printf("Enter height in meters (example: 1.75):");
+    printf("Enter height in meters (example: 1.75): ");
     scanf("%lf", &h);
     
     double i = m/(h*h);
@@ -80,16 +81,16 @@ void solution2()
 
     printf("\nThe maximum of four numbers.\n");
     
-    printf("Enter 1st number:");
+    printf("Enter 1st number: ");
     scanf("%i", &a);
     
-    printf("Enter 2nd number:");
+    printf("Enter 2nd number: ");
     scanf("%i", &b);
     
-    printf("Enter 3rd number:");
+    printf("Enter 3rd number: ");
     scanf("%i", &c);
     
-    printf("Enter 4st number:");
+    printf("Enter 4st number: ");
     scanf("%i", &d);
     
     if (a > b) {
@@ -122,10 +123,10 @@ void solution3()
     
     // 1
     printf("\n1) Swap method with an additional variable.\n");
-    printf("Enter 1st number:");
+    printf("Enter 1st number: ");
     scanf("%i", &a);
     
-    printf("Enter 2nd number:");
+    printf("Enter 2nd number: ");
     scanf("%i", &b);
     
     temp_a = a;
@@ -136,10 +137,10 @@ void solution3()
     
     // 2*
     printf("\n2) Swap method without additional variable.\n");
-    printf("Enter 1st number:");
+    printf("Enter 1st number: ");
     scanf("%i", &a);
     
-    printf("Enter 2nd number:");
+    printf("Enter 2nd number: ");
     scanf("%i", &b);
     
     a = a + b;
