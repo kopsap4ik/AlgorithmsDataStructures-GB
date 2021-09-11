@@ -66,15 +66,46 @@ void solution1()
     scanf("%lf", &h);
     
     double i = m/(h*h);
-//    double i = h*h;
-    
-//    printf("Body Mass Index: %d\n", i);
+
     printf("Body Mass Index: %.2f\n", i);
 }
 
+// 2. Найти максимальное из четырех чисел. Массивы не использовать.
 void solution2()
 {
-    printf("Solution: 2\n");
+    int a, b, c, d;
+    int firstCandidate, secondCandidate;
+
+    printf("Enter 1st number:");
+    scanf("%i", &a);
+    
+    printf("Enter 2nd number:");
+    scanf("%i", &b);
+    
+    printf("Enter 3rd number:");
+    scanf("%i", &c);
+    
+    printf("Enter 4st number:");
+    scanf("%i", &d);
+    
+    if (a > b) {
+        firstCandidate = a;
+    } else {
+        firstCandidate = b;
+    }
+    
+    if (c > d) {
+        secondCandidate = c;
+    } else {
+        secondCandidate = d;
+    }
+    
+    if (firstCandidate > secondCandidate) {
+        printf("Largest number: %i\n", firstCandidate);
+    } else {
+        printf("Largest number: %i\n", secondCandidate);
+    }
+    
 }
 
 void solution3()
