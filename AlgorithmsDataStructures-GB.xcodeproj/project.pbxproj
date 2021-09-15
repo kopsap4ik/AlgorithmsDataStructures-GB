@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D9DDBF8026EC939700AF76D9 /* Petuhov_Lesson_1.c in Sources */ = {isa = PBXBuildFile; fileRef = D9DDBF7F26EC939700AF76D9 /* Petuhov_Lesson_1.c */; };
+		D9DDBF8726F27CE900AF76D9 /* Petuhov_Lesson_2.c in Sources */ = {isa = PBXBuildFile; fileRef = D9DDBF8626F27CE900AF76D9 /* Petuhov_Lesson_2.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		D9DDBF7C26EC939700AF76D9 /* AlgorithmsDataStructures-GB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AlgorithmsDataStructures-GB"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DDBF7F26EC939700AF76D9 /* Petuhov_Lesson_1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Petuhov_Lesson_1.c; sourceTree = "<group>"; };
+		D9DDBF8626F27CE900AF76D9 /* Petuhov_Lesson_2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Petuhov_Lesson_2.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				D9DDBF7F26EC939700AF76D9 /* Petuhov_Lesson_1.c */,
+				D9DDBF8626F27CE900AF76D9 /* Petuhov_Lesson_2.c */,
 				D9DDBF7D26EC939700AF76D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +113,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9DDBF8726F27CE900AF76D9 /* Petuhov_Lesson_2.c in Sources */,
 				D9DDBF8026EC939700AF76D9 /* Petuhov_Lesson_1.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
