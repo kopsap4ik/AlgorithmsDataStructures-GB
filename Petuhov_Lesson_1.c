@@ -3,7 +3,6 @@
 //  Petuhov_Lesson_1
 //
 //  Created by Василий Петухов on 11.09.2021.
-//
 
 #include <stdio.h>
 #include <math.h>
