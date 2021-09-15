@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9DDBF8026EC939700AF76D9 /* Petuhov_Lesson_1.c in Sources */ = {isa = PBXBuildFile; fileRef = D9DDBF7F26EC939700AF76D9 /* Petuhov_Lesson_1.c */; };
 		D9DDBF8726F27CE900AF76D9 /* Petuhov_Lesson_2.c in Sources */ = {isa = PBXBuildFile; fileRef = D9DDBF8626F27CE900AF76D9 /* Petuhov_Lesson_2.c */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9DDBF8726F27CE900AF76D9 /* Petuhov_Lesson_2.c in Sources */,
-				D9DDBF8026EC939700AF76D9 /* Petuhov_Lesson_1.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
