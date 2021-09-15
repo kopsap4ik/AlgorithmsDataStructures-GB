@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D9DDBF7C26EC939700AF76D9 /* Petuhov_Lesson_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Petuhov_Lesson_1; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9DDBF7C26EC939700AF76D9 /* AlgorithmsDataStructures-GB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AlgorithmsDataStructures-GB"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DDBF7F26EC939700AF76D9 /* Petuhov_Lesson_1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Petuhov_Lesson_1.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,7 +49,7 @@
 		D9DDBF7D26EC939700AF76D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9DDBF7C26EC939700AF76D9 /* Petuhov_Lesson_1 */,
+				D9DDBF7C26EC939700AF76D9 /* AlgorithmsDataStructures-GB */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +57,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9DDBF7B26EC939700AF76D9 /* Petuhov_Lesson_1 */ = {
+		D9DDBF7B26EC939700AF76D9 /* AlgorithmsDataStructures-GB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9DDBF8326EC939700AF76D9 /* Build configuration list for PBXNativeTarget "Petuhov_Lesson_1" */;
+			buildConfigurationList = D9DDBF8326EC939700AF76D9 /* Build configuration list for PBXNativeTarget "AlgorithmsDataStructures-GB" */;
 			buildPhases = (
 				D9DDBF7826EC939700AF76D9 /* Sources */,
 				D9DDBF7926EC939700AF76D9 /* Frameworks */,
@@ -69,9 +69,9 @@
 			);
 			dependencies = (
 			);
-			name = Petuhov_Lesson_1;
+			name = "AlgorithmsDataStructures-GB";
 			productName = Petuhov_Lesson_1;
-			productReference = D9DDBF7C26EC939700AF76D9 /* Petuhov_Lesson_1 */;
+			productReference = D9DDBF7C26EC939700AF76D9 /* AlgorithmsDataStructures-GB */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -87,7 +87,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D9DDBF7726EC939700AF76D9 /* Build configuration list for PBXProject "Petuhov_Lesson_1" */;
+			buildConfigurationList = D9DDBF7726EC939700AF76D9 /* Build configuration list for PBXProject "AlgorithmsDataStructures-GB" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -100,7 +100,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9DDBF7B26EC939700AF76D9 /* Petuhov_Lesson_1 */,
+				D9DDBF7B26EC939700AF76D9 /* AlgorithmsDataStructures-GB */,
 			);
 		};
 /* End PBXProject section */
@@ -251,7 +251,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9DDBF7726EC939700AF76D9 /* Build configuration list for PBXProject "Petuhov_Lesson_1" */ = {
+		D9DDBF7726EC939700AF76D9 /* Build configuration list for PBXProject "AlgorithmsDataStructures-GB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9DDBF8126EC939700AF76D9 /* Debug */,
@@ -260,7 +260,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9DDBF8326EC939700AF76D9 /* Build configuration list for PBXNativeTarget "Petuhov_Lesson_1" */ = {
+		D9DDBF8326EC939700AF76D9 /* Build configuration list for PBXNativeTarget "AlgorithmsDataStructures-GB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9DDBF8426EC939700AF76D9 /* Debug */,
