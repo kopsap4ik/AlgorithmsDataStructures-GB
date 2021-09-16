@@ -121,12 +121,10 @@ long powerByCycle(int a, int b)
 long powerByRecursion(int a, int b)
 {
     long result = 1;
-    
-    while (b > 0) {
-        result = a * result;
-        b--;
-    }
-    
+        
+    if (b > 0)
+        result = powerByRecursion(a, b - 1) * a;
+
     return result;
 }
 
@@ -145,4 +143,7 @@ void solution2()
     
     result = powerByCycle(a, b);
     printf("Result `a^b` by cycle: %ld\n", result);
+    
+    result = powerByRecursion(a, b);
+    printf("Result `a^b` by Recursion: %ld\n", result);
 }
