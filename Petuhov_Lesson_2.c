@@ -65,10 +65,12 @@ void decimalToBinary(int number)
     printf("%d", remainderDivision);
 }
 
-// этот вариант возвращает int значение, для дальнейшего использования
-int decimalToBinary2(int number)
+// этот вариант возвращает значение, для дальнейшего использования
+// но при очень большом числе выведет случайный набор цифр
+long long decimalToBinary2(int number)
 {
     int resultDivision, remainderDivision;
+    long long result;
     
     resultDivision = number / 2;
     remainderDivision = number % 2;
@@ -76,12 +78,14 @@ int decimalToBinary2(int number)
     if (number == 0)
         return 0;
     else
-        return (decimalToBinary2(resultDivision) * 10 + remainderDivision);
+        result = decimalToBinary2(resultDivision) * 10 + remainderDivision;
+        return (result);
 }
 
 void solution1()
 {
-    int number, result;
+    int number;
+    long long result;
     
     printf("\nConversion decimal number to binary.\n");
     
@@ -92,12 +96,53 @@ void solution1()
     decimalToBinary(number); // функция сама печатает результат
     printf("\n");
     
-    result = decimalToBinary2(number); // функция возвращает значение int
-    printf("Result by return `int`: %d\n", result);
+    result = decimalToBinary2(number); // функция возвращает значение
+    printf("Result by return `number`: %llu\n", result);
 }
 
 
-// MARK: 2-
+// MARK: 2. Реализовать функцию возведения числа a в степень b:
+// a. без рекурсии;
+// b. рекурсивно;
+// c. *рекурсивно, используя свойство четности степени.
+
+long powerByCycle(int a, int b)
+{
+    long result = 1;
+    
+    while (b > 0) {
+        result = a * result;
+        b--;
+    }
+    
+    return result;
+}
+
+long powerByRecursion(int a, int b)
+{
+    long result = 1;
+    
+    while (b > 0) {
+        result = a * result;
+        b--;
+    }
+    
+    return result;
+}
+
 void solution2()
 {
+    int a, b;
+    long result;
+    
+    printf("\nRaising the number `a` to the power `b`.\n");
+    
+    printf("Enter `a` (example: 2): ");
+    scanf("%d", &a);
+    
+    printf("Enter `b` (example: 3): ");
+    scanf("%d", &b);
+    
+    result = powerByCycle(a, b);
+    printf("Result `a^b` by cycle: %ld\n", result);
 }
