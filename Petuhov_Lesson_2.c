@@ -128,6 +128,21 @@ long powerByRecursion(int a, int b)
     return result;
 }
 
+long powerByRecursionQuick(int a, int b)
+{
+    long result = 1;
+        
+    if (b > 0)
+    {
+        if (result % 2 == 0)
+            result = powerByRecursion(a, b / 2) * a;
+        else
+            result = powerByRecursion(a, b - 1) * a;
+    }
+    
+    return result;
+}
+
 void solution2()
 {
     int a, b;
@@ -146,4 +161,7 @@ void solution2()
     
     result = powerByRecursion(a, b);
     printf("Result `a^b` by Recursion: %ld\n", result);
+    
+    result = powerByRecursionQuick(a, b);
+    printf("Result `a^b` by Recursion Quick: %ld\n", result);
 }
