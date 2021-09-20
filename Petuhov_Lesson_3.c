@@ -50,8 +50,8 @@ int main()
 void menu()
 {
     printf("\n1 — Bubblesort\n");
-    printf("2 — The maximum of four numbers\n");
-    printf("3 — Swap two numbers\n");
+    printf("2 — Shaker\n");
+    printf("3 — Binary search\n");
     printf("0 — Exit\n");
 }
 
@@ -190,7 +190,7 @@ void solution1()
         switch (selected)
         {
             case 1:
-                arrayLenght = readArrayFromeFile(arrayNumbers, "ArrayExample.txt");
+                arrayLenght = readArrayFromeFile(arrayNumbers, "UnsortedArray.txt");
                 
                 puts("Array before sorting");
                 printArray(arrayNumbers, arrayLenght);
@@ -205,7 +205,7 @@ void solution1()
                 
                 break;
             case 2:
-                arrayLenght = readArrayFromeFile(arrayNumbers, "ArrayExample.txt");
+                arrayLenght = readArrayFromeFile(arrayNumbers, "UnsortedArray.txt");
                 
                 puts("Array before sorting");
                 printArray(arrayNumbers, arrayLenght);
@@ -215,11 +215,11 @@ void solution1()
                 puts("Array after sorting");
                 printArray(arrayNumbers, arrayLenght);
                 printf("Number of array elements: %d\n", arrayLenght);
-                printf("Number of operations (Bubble Sort Optimized): %d\n", operationsСounterOptimized);
+                printf("Number of operations (Bubble Sort Optimized - flag): %d\n", operationsСounterOptimized);
                 
                 break;
             case 3:
-                arrayLenght = readArrayFromeFile(arrayNumbers, "ArrayExample.txt");
+                arrayLenght = readArrayFromeFile(arrayNumbers, "UnsortedArray.txt");
                 
                 puts("Array before sorting");
                 printArray(arrayNumbers, arrayLenght);
@@ -229,7 +229,7 @@ void solution1()
                 puts("Array after sorting");
                 printArray(arrayNumbers, arrayLenght);
                 printf("Number of array elements: %d\n", arrayLenght);
-                printf("Number of operations (Bubble Sort Optimized): %d\n", operationsСounterOptimized_2);
+                printf("Number of operations (Bubble Sort Optimized - flag and save position swap): %d\n", operationsСounterOptimized_2);
 
                 break;
             case 0:
@@ -243,80 +243,104 @@ void solution1()
     } while (selected != 0);
 }
 
-// 2. Найти максимальное из четырех чисел. Массивы не использовать.
+// MARK: 2. Реализовать шейкерную сортировку.
+int sortShakerClasic(int *array, int arrayLenght){
+    int leftMark = 1;
+    int rightMark = arrayLenght - 1;
+    int operationsСounter = 0;
+    
+    while (leftMark <= rightMark) {
+        operationsСounter++;
+        for (int i = rightMark; i >= leftMark; i--) {
+            operationsСounter++;
+            if (array[i - 1] > array[i]) {
+                operationsСounter++;
+                swap(&array[i - 1], &array[i]);
+            }
+        }
+        leftMark++;
+        
+        for (int i = leftMark; i <= rightMark; i++) {
+            operationsСounter++;
+            if (array[i - 1] > array[i]) {
+                operationsСounter++;
+                swap(&array[i - 1], &array[i]);
+            }
+        }
+        rightMark--;
+    }
+    
+    return operationsСounter;
+}
+
 void solution2()
 {
-    int a, b, c, d;
-    int firstCandidate, secondCandidate;
-
-    printf("\nThe maximum of four numbers.\n");
+    int arrayNumbers[MaxN];
+    int arrayLenght;
     
-    printf("Enter 1st number: ");
-    scanf("%i", &a);
+    arrayLenght = readArrayFromeFile(arrayNumbers, "UnsortedArray.txt");
     
-    printf("Enter 2nd number: ");
-    scanf("%i", &b);
+    puts("Array before sorting");
+    printArray(arrayNumbers, arrayLenght);
     
-    printf("Enter 3rd number: ");
-    scanf("%i", &c);
+    int operationsСounter = sortShakerClasic(arrayNumbers, arrayLenght);
     
-    printf("Enter 4st number: ");
-    scanf("%i", &d);
+    puts("Array after sorting");
+    printArray(arrayNumbers, arrayLenght);
     
-    if (a > b) {
-        firstCandidate = a;
-    } else {
-        firstCandidate = b;
-    }
-    
-    if (c > d) {
-        secondCandidate = c;
-    } else {
-        secondCandidate = d;
-    }
-    
-    if (firstCandidate > secondCandidate) {
-        printf("Largest number: %i\n", firstCandidate);
-    } else {
-        printf("Largest number: %i\n", secondCandidate);
-    }
+    printf("Number of array elements: %d\n", arrayLenght);
+    printf("Number of operations (Shaker Sort Clasic): %d\n", operationsСounter);
     
 }
 
-// 3. Написать программу обмена значениями двух целочисленных переменных:
-//  a. с использованием третьей переменной;
-//  b. *без использования третьей переменной.
+// MARK: 3. Реализовать бинарный алгоритм поиска в виде функции, которой передается отсортированный массив.
+// Функция возвращает индекс найденного элемента или -1, если элемент не найден.
+
+int binarySearch(int *array, int arrayLenght, int searchItem)
+{
+    int min = 0;
+    int max = arrayLenght - 1;
+    int middle;
+    
+    int operationsСounter = 0;
+    
+    while (min <= max) {
+        operationsСounter++;
+        middle = (max - min) / 2 + min;
+
+        if (searchItem == array[middle]) {
+            printf("Number of operations: %d\n", operationsСounter);
+            return middle;
+        }
+
+        if (searchItem > array[middle]) min = middle + 1;
+
+        if (searchItem < array[middle]) max = middle - 1;
+    }
+
+    
+    return -1;
+}
+
 void solution3()
 {
-    int a, b;
-    int temp_a;
+    int arrayNumbers[MaxN];
+    int arrayLenght;
+    int searchItem;
+    int searchedItemPosition;
     
-    // 1
-    printf("\n1) Swap method with an additional variable.\n");
-    printf("Enter 1st number: ");
-    scanf("%i", &a);
+    arrayLenght = readArrayFromeFile(arrayNumbers, "UnsortedArray.txt");
     
-    printf("Enter 2nd number: ");
-    scanf("%i", &b);
+    sortShakerClasic(arrayNumbers, arrayLenght);
+    printArray(arrayNumbers, arrayLenght);
     
-    temp_a = a;
-    a = b;
-    b = temp_a;
+    printf("Enter the number to find: ");
+    scanf("%i", &searchItem);
     
-    printf("Method 1. Swap result: %i and %i\n", a, b);
+    searchedItemPosition = binarySearch(arrayNumbers, arrayLenght, searchItem);
     
-    // 2*
-    printf("\n2) Swap method without additional variable.\n");
-    printf("Enter 1st number: ");
-    scanf("%i", &a);
-    
-    printf("Enter 2nd number: ");
-    scanf("%i", &b);
-    
-    a = a + b;
-    b = a - b;
-    a = a - b;
-    
-    printf("Method 2. Swap result: %i and %i\n", a, b);
+    printf("Your number ");
+    if (searchedItemPosition == -1) printf("not found!\n");
+    else printf("founded in position [%d]\n", searchedItemPosition);
 }
 
