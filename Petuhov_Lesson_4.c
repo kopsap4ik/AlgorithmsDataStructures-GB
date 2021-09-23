@@ -1,8 +1,9 @@
 //
-//  Petuhov_Lesson_1.c
-//  Petuhov_Lesson_1
+//  Petuhov_Lesson_4.c
+//  AlgorithmsDataStructures-GB
 //
-//  Created by Василий Петухов on 11.09.2021.
+//  Created by Василий Петухов on 23.09.2021.
+//
 
 #include <stdio.h>
 #include <math.h>
