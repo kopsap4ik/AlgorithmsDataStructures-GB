@@ -58,12 +58,12 @@ void menu()
 
 
 // MARK: 1. Реализовать перевод из десятичной в двоичную систему счисления с использованием стека.
-#define size 100
+#define size_1 100
 int position = -1;
-int Stack[size];
+int Stack[size_1];
 
 void PushStack(int data){
-    if(position < size) Stack[++position] = data;
+    if(position < size_1) Stack[++position] = data;
     else printf("Stack overflow \n");
 }
 
@@ -113,27 +113,27 @@ void solution2()
 // неправильных: )(, ())({), (, ])}), ([(]) для скобок [,(,{.
 // Примеры входных выражений: (2+(2*2)) или [2/{5*(4+7)}]
 
-typedef struct TNode3 Node3;
+typedef struct TNode_3 Node_3;
 
-struct TNode3 {
+struct TNode_3 {
     char value;
-    struct TNode3 *next;
+    struct TNode_3 *next;
 };
 
-struct Stack3 {
-    Node3 *head;
-    int size3;
+struct Stack_3 {
+    Node_3 *head;
+    int size_3;
     int maxSize;
 };
 
-struct Stack3 stack3;
+struct Stack_3 stack3;
 
-void pushToStackChar(char value) {
-    if (stack3.size3 >= stack3.maxSize) {
+void pushStack_3(char value) {
+    if (stack3.size_3 >= stack3.maxSize) {
         printf("Stack overflow\n");
         return;
     }
-    Node3 *tmp = (Node3*)malloc(sizeof(Node3));
+    Node_3 *tmp = (Node_3*)malloc(sizeof(Node_3));
     
     if (tmp == NULL) {
         printf("No memory allocated\n");
@@ -142,14 +142,14 @@ void pushToStackChar(char value) {
         tmp->next = stack3.head;
         
         stack3.head = tmp;
-        stack3.size3++;
+        stack3.size_3++;
     }
 }
 
-char popFromStackChar(void) {
-    if (stack3.size3 == 0) return '!';
+char popStack_3(void) {
+    if (stack3.size_3 == 0) return '!';
     
-    Node3* next = NULL;
+    Node_3* next = NULL;
     
     char value;
     value = stack3.head->value;
@@ -158,11 +158,11 @@ char popFromStackChar(void) {
     stack3.head = stack3.head->next;
     free(next);
     
-    stack3.size3--;
+    stack3.size_3--;
     return value;
 }
 
-void printR(Node3* current) {
+void printR(Node_3* current) {
     if (current != NULL) {
         printR(current->next);
         printf("%i ", current->value);
@@ -199,12 +199,12 @@ void solution3()
     for (int i = 0; i < strlen(buffer); i++) {
         if (isForwardBracket(buffer[i])) {
             printf("Forward bracket %c is in %i position\n", buffer[i], i+1);
-            pushToStackChar(buffer[i]);
+            pushStack_3(buffer[i]);
         }
         
         if (isBackwardBracket(buffer[i])) {
             printf("Backward bracket %c is in %i position\n", buffer[i], i+1);
-            char charFromStack = popFromStackChar();
+            char charFromStack = popStack_3();
             if (charFromStack == '!') {
                 backwardIsFirst = 1;
                 break;
@@ -218,7 +218,7 @@ void solution3()
         }
     }
     
-    char lastCharFromStack = popFromStackChar();
+    char lastCharFromStack = popStack_3();
     
     if (lastCharFromStack != '!') printf("Error: missing closing bracket\n");
     else {
