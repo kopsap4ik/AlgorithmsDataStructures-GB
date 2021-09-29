@@ -101,10 +101,95 @@ void solution1()
 // MARK: 2. Добавить в программу «реализация стека на основе односвязного списка» проверку на выделение памяти.
 // Если память не выделяется, то выводится соответствующее сообщение.
 
+typedef struct TNode_2 Node_2;
+
+struct TNode_2 {
+    int value;
+    struct TNode_2 *next;
+};
+
+struct Stack2 {
+    Node_2 *head;
+    int size;
+    int maxSize;
+};
+
+struct Stack2 stack_2;
+
+void pushStack_2(int value) {
+    if (stack_2.size >= stack_2.maxSize) {
+        printf("Stack overflow\n");
+        return;
+    }
+    
+    Node_2 *tmp = (Node_2*)malloc(sizeof(Node_2));
+    
+    if (tmp == NULL) {
+        // проверка на выделение памяти
+        // но как эмитировать эту ошибку не очень понятно
+        printf("No memory allocated\n");
+        exit(EXIT_FAILURE);
+    } else {
+        tmp->value = value;
+        tmp->next = stack_2.head;
+        
+        stack_2.head = tmp;
+        stack_2.size++;
+    }
+}
+
+int popStack_2(void) {
+    if (stack_2.size == 0) {
+        printf("Stack is empty\n");
+        return 0;
+    }
+    
+    Node_2* next = NULL;
+    
+    int value;
+    value = stack_2.head->value;
+    next = stack_2.head;
+    
+    stack_2.head = stack_2.head->next;
+    free(next);
+    
+    stack_2.size--;
+    return value;
+}
+
+void printStack_2(void) {
+    Node_2 *currentNode = stack_2.head;
+    while (currentNode != NULL) {
+        printf("%i\n", currentNode->value);
+        currentNode = currentNode->next;
+    }
+}
+    
 void solution2()
 {
-
+    int countAddNodes, countRemoveNodes;
     
+    printf("\nEnter numbers of nodes to add to stack: ");
+    scanf("%d", &countAddNodes);
+    
+    printf("Enter numbers of nodes to remove from stack: ");
+    scanf("%d", &countRemoveNodes);
+    
+    stack_2.maxSize = 10;
+    stack_2.head = NULL;
+    
+    int i;
+    for (i = 1; i <= countAddNodes; i++) {
+        pushStack_2(i);
+    }
+    printf("Stack after push %d node(s):\n", countAddNodes);
+    printStack_2();
+
+    for (i = 1; i <= countRemoveNodes; i++) {
+        popStack_2();
+    }
+    printf("Stack after pop %d node(s):\n", countRemoveNodes);
+    printStack_2();
 }
 
 
@@ -137,6 +222,7 @@ void pushStack_3(char value) {
     
     if (tmp == NULL) {
         printf("No memory allocated\n");
+        exit(EXIT_FAILURE);
     } else {
         tmp->value = value;
         tmp->next = stack3.head;
