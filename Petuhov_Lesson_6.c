@@ -35,6 +35,7 @@ int main()
             case 0:
                 printf("Finished, Bye!\n");
                 break;
+                
             default:
                 printf("Wrong option selected\n");
         }
@@ -63,14 +64,14 @@ unsigned long getHashFrom(char* lineText) {
     return result;
 }
 
-//unsigned long hash(char* lineText)
-//{
-//    unsigned long hashval;
-//
-//    for (hashval = 0; *lineText != '\0'; lineText++)
-//        hashval = *lineText + 31*hashval;
-//    return hashval;
-//}
+unsigned long hash(char* lineText)
+{
+    unsigned long hashval;
+
+    for (hashval = 0; *lineText != '\0'; lineText++)
+        hashval = *lineText + 31*hashval;
+    return hashval;
+}
 
 //unsigned long getHashFrom_2(char* lineText){
 //    int i = 0;
@@ -85,13 +86,14 @@ unsigned long getHashFrom(char* lineText) {
 
 void solution1()
 {
-    char inputText[] = "";
+    char inputText[] = "abc";
     
     printf("\nVariant 1:\nEnter a string for generate hash: ");
     scanf("%s", inputText);
 //    printf("Hash: %lu\n", getHashFrom(inputText));
-
-    printf("Hash: %lu\n", getHashFrom(inputText));
+    
+    unsigned long hash = getHashFrom(inputText);
+    printf("Hash: %lu\n", hash);
 }
 
 
