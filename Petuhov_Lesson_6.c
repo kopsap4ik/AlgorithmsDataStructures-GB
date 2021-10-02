@@ -52,48 +52,30 @@ void menu()
 }
 
 
-// MARK: 1. Реализовать простейшую хеш-функцию. На вход функции подается строка, на выходе сумма кодов символов.
+// MARK: 1. Реализовать простейшую хеш-функцию.
+// На вход функции подается строка, на выходе сумма кодов символов.
 
-unsigned long getHashFrom(char* lineText) {
-    unsigned long result = 0;
-    unsigned long textLength = strlen(lineText);
-    
-    for (int i = 0; i < textLength; i++) {
-        result = result + lineText[i];
+unsigned long hash(char *lineText){
+    int i = 0;
+    unsigned long counter = 0;
+
+    while(lineText[i] != '\0'){
+        counter += lineText[i];
+        i++;
     }
-    return result;
+    return counter;
 }
-
-unsigned long hash(char* lineText)
-{
-    unsigned long hashval;
-
-    for (hashval = 0; *lineText != '\0'; lineText++)
-        hashval = *lineText + 31*hashval;
-    return hashval;
-}
-
-//unsigned long getHashFrom_2(char* lineText){
-//    int i = 0;
-//    unsigned long counter = 0;
-//
-//    while(lineText[i] != '\0'){
-//        counter += lineText[i];
-//        i++;
-//    }
-//    return counter;
-//}
 
 void solution1()
 {
-    char inputText[] = "abc";
+    char inputText[100];
     
-    printf("\nVariant 1:\nEnter a string for generate hash: ");
+    printf("\nSimple hash function\n");
+    printf("Enter a string for generate hash: ");
     scanf("%s", inputText);
-//    printf("Hash: %lu\n", getHashFrom(inputText));
     
-    unsigned long hash = getHashFrom(inputText);
-    printf("Hash: %lu\n", hash);
+    unsigned long hashValue = hash(inputText);
+    printf("Hash: %lu\n", hashValue);
 }
 
 
