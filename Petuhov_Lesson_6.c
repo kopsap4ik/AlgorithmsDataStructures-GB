@@ -127,7 +127,7 @@ void insertNode(Node **head, int value) {
                 return;
             }
         } else {
-            exit(2); // The tree is not built correctly
+            exit(2);
         }
     }
 }
