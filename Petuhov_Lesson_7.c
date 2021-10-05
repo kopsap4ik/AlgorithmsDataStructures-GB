@@ -12,9 +12,6 @@
 //#include <ctype.h>
 
 #define MAX_SIZE 100
-#define whiteNode 1
-#define grayNode 2
-#define blackNode 3
 
 const char* fileName = "Matrix.txt";
 // граф из методички
@@ -129,6 +126,10 @@ void solution1()
 
 int stateMatrix[MAX_SIZE];
 
+#define whiteNode 1
+#define grayNode 2
+#define blackNode 3
+
 void depthGraphTraversal(int adjacencyMatrixArray[MAX_SIZE][MAX_SIZE], int countNodes, int currentNode) {
     for (int j = 0; j < countNodes; j++) {
         if (currentNode != 0 && stateMatrix[currentNode] == blackNode) {
@@ -146,7 +147,6 @@ void depthGraphTraversal(int adjacencyMatrixArray[MAX_SIZE][MAX_SIZE], int count
             }
         } else {
             printf("Farthest node: %c(%i)\n", 65 + currentNode, currentNode);
-            exit(0); // выход по достижении конца
         }
     }
     
@@ -171,17 +171,102 @@ void solution2()
     }
     
     depthGraphTraversal(matrix, countNodes, initialNode);
-    printf("\n");
 }
 
 // MARK: 3. Написать функцию обхода графа в ширину.
 
+typedef struct Queue Queue;
+typedef struct VertexGraph VertexGraph;
+
+struct VertexGraph {
+    struct VertexGraph* nextVertexNode;
+    struct VertexGraph* previousVertexNode;
+    int value;
+};
+
+struct Queue {
+    VertexGraph* head;
+    VertexGraph* tail;
+    int size;
+};
+
+Queue queue_3;
+
+void enQueue(Queue* queue, int value) {
+    VertexGraph* tmp = (VertexGraph*)malloc(sizeof(VertexGraph));
+    
+    if (tmp == NULL) {
+        printf("No memory allocated\n");
+    } else {
+        tmp->nextVertexNode = queue->head;
+        tmp->previousVertexNode = NULL;
+        tmp->value = value;
+        if (queue->head == NULL) {
+            queue->tail = tmp;
+        } else {
+            queue->head->previousVertexNode = tmp;
+        }
+        queue->head = tmp;
+        queue->size++;
+    }
+}
+
+int deQueue(Queue* queue) {
+    if (queue->size == 0) {
+        printf("Queue is empty\n");
+        return -1;
+    }
+    
+    int value = queue->tail->value;
+    VertexGraph* tmp = queue->tail;
+    queue->tail = queue->tail->previousVertexNode;
+    
+    if (queue->size > 1) queue->tail->nextVertexNode = NULL;
+    else queue->head = NULL;
+    
+    queue->size--;
+    free(tmp);
+    
+    return value;
+}
+
+void widthGraphTraversal(int matrix[MAX_SIZE][MAX_SIZE], int countNodes) {
+    if (countNodes != 0) {
+        for (int i = 0; i < countNodes; i++) {
+            stateMatrix[i] = whiteNode;
+        }
+    } else {
+        printf("Graph is empty\n");
+        exit(1);
+    }
+    
+    stateMatrix[0] = grayNode;
+    enQueue(&queue_3, 0);
+    
+    while (queue_3.size > 0) {
+        int currentNode = deQueue(&queue_3);
+        
+        if (stateMatrix[currentNode] == grayNode) {
+            for (int j = 0; j < countNodes; j++) {
+                if (matrix[currentNode][j] != 0 && stateMatrix[j] == whiteNode) {
+                    enQueue(&queue_3, j);
+                    stateMatrix[j] = grayNode;
+                    printf("%c(%i) -> %c(%i)\n", 65 + currentNode, currentNode, 65 + j, j);
+                }
+            }
+            stateMatrix[currentNode] = blackNode;
+        }
+    }
+}
 
 
 void solution3()
 {
-
+    readMatrixFrom(fileName, matrix);
+    printFrom(matrix, countNodes);
+    printf("\n");
     
+    widthGraphTraversal(matrix, countNodes);
 }
 
 
