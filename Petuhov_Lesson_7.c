@@ -59,9 +59,56 @@ void menu()
 
 // MARK: 1. Написать функцию, которая считывают матрицу смежности из файла и выводят ее на экран.
 
+#define MAX_SIZE 100
+
+int matrix[MAX_SIZE][MAX_SIZE];
+int countNodes = 0;
+const char* fileName = "Matrix.txt";
+
+void readMatrixFrom(const char *fileName, int array[MAX_SIZE][MAX_SIZE]) {
+    FILE *file;
+    file = fopen(fileName,"r");
+    if (file == NULL) {
+        printf("File not found\n");
+        exit(1);
+    }
+    
+    fscanf(file, "%i", &countNodes);
+    if (countNodes > MAX_SIZE) {
+        printf("Too large matrix in file, change the `MAX_SIZE` parameter\n");
+        exit(1);
+    }
+    
+    for (int i = 0; i < countNodes; i++) {
+        for (int j = 0; j < countNodes; j++) {
+            fscanf(file, "%i", &array[i][j]);
+        }
+    }
+    fclose(file);
+}
+
+void printFrom(int matrix[MAX_SIZE][MAX_SIZE], int numberOfVertices) {
+    printf("%s", "        ");
+    for (int i = 0; i < numberOfVertices; i++) {
+        printf("%c(%i) ", 65 + i, i);
+    }
+    printf("\n");
+    for (int i = 0; i < numberOfVertices; i++) {
+        printf("%c(%i) ", 65 + i, i);
+        for (int j = 0; j < numberOfVertices; j++) {
+            printf("%5i", (matrix[i][j] == INFINITY) ? 0 : matrix[i][j]);
+        }
+        printf("\n");
+    }
+    getchar();
+}
+
 void solution1()
 {
-
+    printf("\nThe matrix will be read from the file: %s\n", fileName);
+    readMatrixFrom(fileName, matrix);
+    printFrom(matrix, countNodes);
+    printf("\n");
 }
 
 
