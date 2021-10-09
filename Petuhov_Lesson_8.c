@@ -11,6 +11,8 @@
 #include <stdlib.h>
 //#include <ctype.h>
 
+#define MaxArraySize 1000
+
 void menu();
 void solution1();
 void solution2();
@@ -60,11 +62,6 @@ void menu()
 
 // MARK: 1. Реализовать сортировку подсчетом.
 
-#define MaxArraySize 1000
-#define arrLenght 40
-
-int initialArray[arrLenght] = {667, 87, 76, 27, 33, 52, 429, 79, 16, 85, 12, 355, 55, 34, 293, 10, 404, 68, 69, 24, 960, 92, 42, 235, 36, 71, 84, 602, 12, 65, 338, 66, 31, 60, 41, 48, 44, 16, 37, 11};
-
 void countingSort(int* initialArray, int *sortedArray, int arrayLength) {
     int tempArray[MaxArraySize];
     
@@ -87,15 +84,23 @@ void countingSort(int* initialArray, int *sortedArray, int arrayLength) {
 }
 
 void solution1()
+
 {
+    int arrLenght;
+    
+    printf("Enter count elements for generate unsorted array: ");
+    scanf("%d", &arrLenght);
+    
+    int unsortedArray[arrLenght];
     int sortedArray[arrLenght];
     
     printf("Unsorted array:\n");
-    for (int i = 0; i < arrLenght; i++) {
-        printf("%i ", initialArray[i]);
+    for (int i = 0 ; i < arrLenght; i++) {
+        unsortedArray[i] = rand() % 1000;
+        printf("%i ", unsortedArray[i]);
     }
     
-    countingSort(initialArray, sortedArray, arrLenght);
+    countingSort(unsortedArray, sortedArray, arrLenght);
     
     printf("\n\nSorted array:\n");
     for (int i = 0; i < arrLenght; i++) {
@@ -107,9 +112,65 @@ void solution1()
 
 // MARK: 2. Реализовать быструю сортировку.
 
+void quickSort(int *numbersArray, int left, int right) {
+    int pivot;
+    int lHold = left;
+    int rHold = right;
+    
+    pivot = numbersArray[left];
+    
+    while (left < right) {
+        while ((numbersArray[right] >= pivot) && (left < right)) {
+            right--;
+        }
+        
+        if (left != right) {
+            numbersArray[left] = numbersArray[right];
+            left++;
+        }
+        
+        while ((numbersArray[left] <= pivot) && (left < right)) {
+            left++;
+        }
+        
+        if (left != right) {
+            numbersArray[right] = numbersArray[left];
+            right--;
+        }
+    }
+    
+    numbersArray[left] = pivot;
+    pivot = left;
+    left = lHold;
+    right = rHold;
+    
+    if (left < pivot) quickSort(numbersArray, left, pivot);
+    if (right > pivot) quickSort(numbersArray, pivot + 1, right);
+}
+
 void solution2()
 {
- 
+    
+    int arrLenght;
+    
+    printf("Enter count elements for generate unsorted array: ");
+    scanf("%d", &arrLenght);
+    
+    int unsortedArray[arrLenght];
+//    int sortedArray[arrLenght];
+    
+    printf("Unsorted array:\n");
+    for (int i = 0 ; i < arrLenght; i++) {
+        unsortedArray[i] = rand() % 1000;
+        printf("%i ", unsortedArray[i]);
+    }
+
+    quickSort(unsortedArray, 0, arrLenght - 1);
+    
+    printf("\n\nSorted array:\n");
+    for (int i = 0 ; i < arrLenght; i++) {
+        printf("%i ", unsortedArray[i]);
+    }
 }
 
 // MARK: 3. Проанализируйте время работы каждого из вида сортировок для 100, 1000, 1000000 элементов.
@@ -117,7 +178,7 @@ void solution2()
 
 void solution3()
 {
-
+    
 }
 
 
