@@ -9,14 +9,12 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-//#include <ctype.h>
 
 #define MaxArraySize 1000
 
 void menu();
 void solution1();
 void solution2();
-void solution3();
 
 int main()
 {
@@ -36,9 +34,6 @@ int main()
             case 2:
                 solution2();
                 break;
-            case 3:
-                solution3();
-                break;
             case 0:
                 printf("Finished, Bye!\n");
                 break;
@@ -55,7 +50,6 @@ void menu()
 {
     printf("\n1 — Counting Sort\n");
     printf("2 — Quick Sort\n");
-    printf("3 — Analysis of sorting metods\n");
     printf("0 — Exit\n");
 }
 
@@ -157,7 +151,6 @@ void solution2()
     scanf("%d", &arrLenght);
     
     int unsortedArray[arrLenght];
-//    int sortedArray[arrLenght];
     
     printf("Unsorted array:\n");
     for (int i = 0 ; i < arrLenght; i++) {
@@ -171,14 +164,6 @@ void solution2()
     for (int i = 0 ; i < arrLenght; i++) {
         printf("%i ", unsortedArray[i]);
     }
-}
-
-// MARK: 3. Проанализируйте время работы каждого из вида сортировок для 100, 1000, 1000000 элементов.
-// Заполните таблицу (смотри методичку).
-
-void solution3()
-{
-    
 }
 
 
